@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:cualni-digitaltwin-pro:schema:cif-metadata:1.0",
+  "title": "CuAlNi-DigitalTwin Pro CIF citation metadata",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "required": ["phase", "citation"],
+    "properties": {
+      "phase": {"type": "string", "minLength": 1},
+      "citation": {"type": "string", "minLength": 1},
+      "source_url": {"type": "string", "format": "uri"}
+    },
+    "additionalProperties": false
+  },
+  "description": "Keys are exact CIF filenames or stems. This schema contains no crystallographic values."
+}

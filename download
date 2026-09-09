@@ -1,0 +1,17 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+.streamlit/secrets.toml
+reports/
+*.tmp
+.DS_Store
+Thumbs.db
+

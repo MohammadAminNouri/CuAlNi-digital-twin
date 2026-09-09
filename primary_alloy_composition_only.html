@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cu-14.3Al-4.3Ni wt% - composition-only audit</title>
+  <style>
+@page { size: A4; margin: 18mm 16mm 18mm; }
+:root { --ink:#172235; --muted:#65758b; --line:#d7e0eb; --teal:#138f84; --violet:#6253cf; --amber:#bb7100; }
+* { box-sizing:border-box; }
+body { margin:0; color:var(--ink); font-family:Inter,Segoe UI,Arial,sans-serif; font-size:14px; line-height:1.48; }
+.cover { padding:34px; color:white; min-height:250px; background:linear-gradient(125deg,#0c273d,#26356f); border-radius:18px; }
+.kicker { font-size:11px; letter-spacing:.15em; color:#83e8db; font-weight:750; }
+h1 { margin:8px 0 3px; font-size:34px; letter-spacing:-.035em; }
+h2 { font-size:20px; margin:32px 0 12px; border-bottom:2px solid #dfe7f0; padding-bottom:7px; }
+.subtitle { color:#c6d2e2; max-width:720px; }
+.meta { display:flex; flex-wrap:wrap; gap:10px; margin-top:26px; }
+.meta span { border:1px solid rgba(255,255,255,.24); border-radius:999px; padding:5px 10px; font-size:11px; }
+.provenance-banner { margin:22px 0 5px; padding:14px 16px; background:#f2f6fb; border-left:4px solid #66758a; border-radius:5px; }
+.section { break-inside:avoid-page; }
+.badges { margin:3px 0 10px; }
+.badge { display:inline-block; border-radius:999px; padding:3px 8px; margin-right:5px; font-size:11px; font-weight:700; border:1px solid currentColor; }
+.physics_calculated { color:var(--teal); background:#edf9f7; }
+.machine_learning_prediction { color:var(--violet); background:#f2f0ff; }
+.engineering_screening { color:var(--amber); background:#fff7e6; }
+.experimental_measurement { color:#0879ac; background:#edf8fc; }
+.unavailable { color:#687488; background:#f1f3f6; }
+table { width:100%; border-collapse:collapse; margin:8px 0 13px; font-size:12px; }
+th { text-align:left; color:#536176; background:#f1f5fa; font-size:10px; text-transform:uppercase; letter-spacing:.06em; }
+th,td { padding:7px 8px; border:1px solid var(--line); vertical-align:top; }
+.limitations { color:#5e6878; background:#f8fafc; border-left:3px solid #8794a6; padding:9px 11px; font-size:12px; }
+.figure { margin:14px 0; border:1px solid var(--line); border-radius:9px; padding:7px; break-inside:avoid-page; }
+.empty { color:#738095; font-style:italic; padding:8px 0; }
+.footer-note { margin-top:36px; padding-top:10px; border-top:1px solid var(--line); color:#6b788c; font-size:10px; }
+code { background:#eff3f8; padding:1px 4px; border-radius:3px; }
+</style>
+  
+</head>
+<body>
+  <main>
+    <header class="cover">
+      <div class="kicker">CUALNI-DIGITALTWIN PRO</div>
+      <h1>Cu-14.3Al-4.3Ni wt% - composition-only audit</h1>
+      <p class="subtitle">Composition to crystal structure, phase stability, properties, and additive-manufacturing screening.</p>
+      <div class="meta"><span>Report CAN-PRIMARY-COMPOSITION-ONLY</span><span>2026-09-09 00:00 UTC</span><span>Schema 1.0</span></div>
+    </header>
+    <div class="provenance-banner"><b>Scientific interpretation rule.</b> Physics calculations, ML predictions,
+      engineering screens, and experimental measurements are distinct evidence classes. Unavailable results are
+      never replaced with assumed values.</div>
+    
+    <section class="section" id="composition">
+      <h2>Composition and descriptors</h2>
+      <div class="badges">
+        <span class="badge physics_calculated">Physics calculated</span>
+        <span class="badge unavailable">Confidence: Deterministic composition conversion; descriptor uncertainty follows input uncertainty</span>
+      </div>
+      <p><b>Provenance:</b> composition.converter.AlloyComposition and composition.descriptors.compute_descriptors</p>
+      
+      <table><thead><tr><th>Result</th><th>Value</th></tr></thead><tbody>
+        <tr><td>Input Wt Percent</td><td>Cu: 81.4; Al: 14.3; Ni: 4.3</td></tr><tr><td>Weight Percent</td><td>Cu: 81.4; Al: 14.3; Ni: 4.3</td></tr><tr><td>Atomic Percent</td><td>Cu: 67.9838; Al: 28.128; Ni: 3.8882</td></tr><tr><td>Mole Fraction</td><td>Cu: 0.679838; Al: 0.28128; Ni: 0.038882</td></tr><tr><td>Hume Rothery E A</td><td>Unavailable [not available]</td></tr><tr><td>Valence Electron Concentration</td><td>8.71088 electrons/atom [physics calculated]</td></tr><tr><td>Density Estimate</td><td>6.72754 g/cm^3 [engineering screening]</td></tr>
+      </tbody></table>
+      
+      
+      <div class="limitations"><b>Limitations:</b> Composition conversion assumes the atomic-weight constants documented by the composition module. · Density and electronic descriptors, if present, are mixture-rule descriptors rather than measured bulk properties.</div>
+    </section>
+    
+    <section class="section" id="thermodynamics">
+      <h2>Thermodynamics and phase stability</h2>
+      <div class="badges">
+        <span class="badge unavailable">Unavailable</span>
+        <span class="badge unavailable">Confidence: Not applicable</span>
+      </div>
+      <p><b>Provenance:</b> No thermodynamic database supplied</p>
+      
+      <table><thead><tr><th>Result</th><th>Value</th></tr></thead><tbody>
+        <tr><td>Reason</td><td>Upload a licensed/open Cu-Al-Ni TDB containing compatible Cu, Al, and Ni phases to calculate equilibrium.</td></tr>
+      </tbody></table>
+      
+      
+      <div class="limitations"><b>Limitations:</b> Upload a licensed/open Cu-Al-Ni TDB containing compatible Cu, Al, and Ni phases to calculate equilibrium.</div>
+    </section>
+    
+    <section class="section" id="phases">
+      <h2>Phase assessment</h2>
+      <div class="badges">
+        <span class="badge unavailable">Unavailable</span>
+        <span class="badge unavailable">Confidence: Not applicable</span>
+      </div>
+      <p><b>Provenance:</b> No thermodynamic database supplied</p>
+      
+      <table><thead><tr><th>Result</th><th>Value</th></tr></thead><tbody>
+        <tr><td>Phase Reference Catalog</td><td>5 structured records: beta, beta1, 18R, 2H, gamma2 (see JSON export for full metadata)</td></tr><tr><td>Risks</td><td>gamma2: Requires a database-calculated γ₂ phase fraction or a cited screening profile.; brittleness: Requires measured properties or a cited engineering screening profile.; segregation: Requires Scheil/kinetic results or spatial experimental composition data.</td></tr>
+      </tbody></table>
+      
+      
+      <div class="limitations"><b>Limitations:</b> Upload a licensed/open Cu-Al-Ni TDB containing compatible Cu, Al, and Ni phases to calculate equilibrium.</div>
+    </section>
+    
+    <section class="section" id="crystallography">
+      <h2>Crystallography</h2>
+      <div class="badges">
+        <span class="badge unavailable">Unavailable</span>
+        <span class="badge unavailable">Confidence: Not applicable</span>
+      </div>
+      <p><b>Provenance:</b> crystallography.crystal_database literature registry</p>
+      
+      <table><thead><tr><th>Result</th><th>Value</th></tr></thead><tbody>
+        <tr><td>Reason</td><td>No complete CIF was supplied. Literature metadata are shown, but atomic coordinates are required for 3D visualization and structure-factor XRD.</td></tr><tr><td>Literature References</td><td>3 structured records: 18R, 2H, GAMMA2 (see JSON export for full metadata)</td></tr><tr><td>Load Errors</td><td></td></tr>
+      </tbody></table>
+      
+      
+      <div class="limitations"><b>Limitations:</b> No complete CIF was supplied. Literature metadata are shown, but atomic coordinates are required for 3D visualization and structure-factor XRD.</div>
+    </section>
+    
+    <section class="section" id="xrd">
+      <h2>Diffraction / XRD</h2>
+      <div class="badges">
+        <span class="badge unavailable">Unavailable</span>
+        <span class="badge unavailable">Confidence: Not applicable</span>
+      </div>
+      <p><b>Provenance:</b> Not executed</p>
+      
+      <table><thead><tr><th>Result</th><th>Value</th></tr></thead><tbody>
+        <tr><td>Reason</td><td>Diffraction simulation requires a complete validated CIF.</td></tr>
+      </tbody></table>
+      
+      
+      <div class="limitations"><b>Limitations:</b> Diffraction simulation requires a complete validated CIF.</div>
+    </section>
+    
+    <section class="section" id="ml">
+      <h2>Machine-learning property predictions</h2>
+      <div class="badges">
+        <span class="badge unavailable">Unavailable</span>
+        <span class="badge unavailable">Confidence: Not applicable</span>
+      </div>
+      <p><b>Provenance:</b> No authorized training dataset supplied</p>
+      
+      <table><thead><tr><th>Result</th><th>Value</th></tr></thead><tbody>
+        <tr><td>Reason</td><td>Upload a provenance metadata JSON and compatible experimental CSV to train transformation/property models.</td></tr>
+      </tbody></table>
+      
+      
+      <div class="limitations"><b>Limitations:</b> Upload a provenance metadata JSON and compatible experimental CSV to train transformation/property models.</div>
+    </section>
+    
+    <section class="section" id="characterization">
+      <h2>Experimental characterization</h2>
+      <div class="badges">
+        <span class="badge unavailable">Unavailable</span>
+        <span class="badge unavailable">Confidence: Not applicable</span>
+      </div>
+      <p><b>Provenance:</b> No experimental data supplied</p>
+      
+      <table><thead><tr><th>Result</th><th>Value</th></tr></thead><tbody>
+        <tr><td>Reason</td><td>Upload XRD, EDS, DSC, or SEM data to run experimental characterization.</td></tr>
+      </tbody></table>
+      
+      
+      <div class="limitations"><b>Limitations:</b> Upload XRD, EDS, DSC, or SEM data to run experimental characterization.</div>
+    </section>
+    
+    <section class="section" id="am">
+      <h2>Additive-manufacturing screening</h2>
+      <div class="badges">
+        <span class="badge unavailable">Unavailable</span>
+        <span class="badge unavailable">Confidence: Not applicable</span>
+      </div>
+      <p><b>Provenance:</b> No engineering-screening normalization profile supplied</p>
+      
+      <table><thead><tr><th>Result</th><th>Value</th></tr></thead><tbody>
+        <tr><td>Reason</td><td>A documented AM normalization profile is required before a comparable 0-10 suitability score can be calculated.</td></tr>
+      </tbody></table>
+      
+      
+      <div class="limitations"><b>Limitations:</b> A documented AM normalization profile is required before a comparable 0-10 suitability score can be calculated.</div>
+    </section>
+    
+    <p class="footer-note">This decision-support report does not replace thermodynamic database licensing,
+      instrument calibration, metallographic validation, qualified process development, or expert review.</p>
+  </main>
+</body>
+</html>

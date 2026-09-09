@@ -1,0 +1,10 @@
+numpy>=1.26,<3
+pandas>=2.1,<3
+scipy>=1.11,<2
+scikit-learn>=1.4,<2
+plotly>=5.20,<7
+streamlit>=1.63,<2
+Jinja2>=3.1,<4
+reportlab>=4,<5
+Pillow>=10,<13
+PyYAML>=6,<7

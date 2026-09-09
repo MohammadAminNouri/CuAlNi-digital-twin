@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this software, cite the software and every database/dataset recorded in its report."
+title: "CuAlNi-DigitalTwin Pro"
+type: software
+version: 1.0.0
+date-released: 2026-09-08
+license: MIT
+authors:
+  - name: "CuAlNi-DigitalTwin Pro contributors"
+keywords:
+  - CALPHAD
+  - Cu-Al-Ni
+  - shape memory alloy
+  - crystallography
+  - additive manufacturing

@@ -1,0 +1,33 @@
+{
+  "title": "CuAlNi-DigitalTwin Pro ML input schema (no observations)",
+  "source": "Project-maintained empty schema; users must populate only traceable experimental observations",
+  "license": "MIT (schema only; uploaded observations retain their original licenses)",
+  "measurement_method": "Not applicable: this file contains column headers only",
+  "units": {
+    "Cu_wt_pct": "wt%",
+    "Al_wt_pct": "wt%",
+    "Ni_wt_pct": "wt%",
+    "solution_treatment_C": "degC",
+    "solution_treatment_min": "min",
+    "aging_C": "degC",
+    "aging_min": "min",
+    "grain_size_um": "um",
+    "beta_fraction": "1",
+    "martensite_fraction": "1",
+    "gamma2_fraction": "1",
+    "Ms_C": "degC",
+    "Mf_C": "degC",
+    "As_C": "degC",
+    "Af_C": "degC",
+    "hardness_HV": "HV",
+    "yield_strength_MPa": "MPa",
+    "uts_MPa": "MPa"
+  },
+  "retrieved_at": "2026-09-05",
+  "citation": null,
+  "doi": null,
+  "url": null,
+  "notes": "Schema-only template. It is intentionally empty and cannot train a model.",
+  "synthetic": false,
+  "allow_training": false
+}

@@ -29,6 +29,10 @@ crystal = ["pymatgen>=2024.5.1", "spglib>=2.4,<3", "ase>=3.23,<4"]
 boosted = ["xgboost>=2,<4", "lightgbm>=4,<5", "shap>=0.45,<1"]
 dev = ["pytest>=8,<10", "pytest-cov>=5,<8", "ruff>=0.6,<1"]
 
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["scientific"]
+
 [tool.setuptools.packages.find]
 where = ["src"]
 

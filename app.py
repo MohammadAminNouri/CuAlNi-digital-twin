@@ -165,7 +165,7 @@ def _parse_json_upload(upload: Any, label: str) -> tuple[dict[str, Any] | None, 
 
 def _build_sidebar() -> tuple[bool, AnalysisInputs | None]:
     st.sidebar.markdown("## Analysis setup")
-    st.sidebar.caption("Inputs remain local to this Streamlit session.")
+    st.sidebar.caption("Uploads are processed by the server hosting this app for your session.")
 
     with st.sidebar.form("analysis_form", border=False):
         st.markdown("### Enter alloy composition")
@@ -276,6 +276,9 @@ def _build_sidebar() -> tuple[bool, AnalysisInputs | None]:
         return True, None
     if t_max_c <= t_min_c:
         st.sidebar.error("Maximum temperature must exceed minimum temperature.")
+        return True, None
+    if t_min_c <= -273.15 or (run_scheil and scheil_start_c <= -273.15) or (run_phase_map and phase_map_c <= -273.15):
+        st.sidebar.error("Calculation temperatures must be above absolute zero (−273.15 °C).")
         return True, None
     if use_e_a and not e_a_citation.strip():
         st.sidebar.error("A citation is required when the optional Hume-Rothery e/a convention is enabled.")
@@ -916,28 +919,37 @@ def _report_tab(analysis: Mapping[str, Any], figures: Mapping[str, list[Any]]) -
         "The HTML report retains interactive Plotly figures. The PDF is a stable paginated record. "
         "The JSON export preserves machine-readable values and audit metadata."
     )
-    enriched = deepcopy(dict(analysis))
-    for section, section_figures in figures.items():
-        if section in enriched and isinstance(enriched[section], dict):
-            enriched[section]["figures"] = [figure for figure in section_figures if figure is not None]
-    generator = AnalysisReportGenerator(
-        enriched,
-        generated_at=datetime.now(timezone.utc),
-        title="Cu-Al-Ni Digital Twin Analysis",
-    )
-    try:
-        html = generator.to_html_bytes()
-        pdf = generator.to_pdf_bytes()
-        raw_json = generator.to_json_bytes()
-    except ReportGenerationError as exc:
-        st.error(str(exc))
-        return
+    # Keep one export bundle per analysis, private to this user's session. A
+    # rerun or download must not create a different report ID or regenerate MBs
+    # of embedded Plotly content. A new analysis invalidates this bundle below.
+    if "report_bundle" not in st.session_state:
+        enriched = deepcopy(dict(analysis))
+        for section, section_figures in figures.items():
+            if section in enriched and isinstance(enriched[section], dict):
+                enriched[section]["figures"] = [figure for figure in section_figures if figure is not None]
+        generator = AnalysisReportGenerator(
+            enriched,
+            generated_at=datetime.now(timezone.utc),
+            title="Cu-Al-Ni Digital Twin Analysis",
+        )
+        try:
+            st.session_state["report_bundle"] = {
+                "html": generator.to_html_bytes(),
+                "pdf": generator.to_pdf_bytes(),
+                "json": generator.to_json_bytes(),
+                "id": generator.report_id,
+                "generated_at": generator.generated_at,
+            }
+        except ReportGenerationError as exc:
+            st.error(str(exc))
+            return
+    bundle = st.session_state["report_bundle"]
     stem = "CuAlNi_DigitalTwin_analysis"
     c1, c2, c3 = st.columns(3)
-    c1.download_button("Download scientific report (PDF)", pdf, f"{stem}.pdf", "application/pdf", width="stretch")
-    c2.download_button("Download interactive report (HTML)", html, f"{stem}.html", "text/html", width="stretch")
-    c3.download_button("Download result bundle (JSON)", raw_json, f"{stem}.json", "application/json", width="stretch")
-    st.caption(f"Report ID: {generator.report_id} · generated {generator.generated_at:%Y-%m-%d %H:%M UTC}")
+    c1.download_button("Download scientific report (PDF)", bundle["pdf"], f"{stem}.pdf", "application/pdf", width="stretch", on_click="ignore")
+    c2.download_button("Download interactive report (HTML)", bundle["html"], f"{stem}.html", "text/html", width="stretch", on_click="ignore")
+    c3.download_button("Download result bundle (JSON)", bundle["json"], f"{stem}.json", "application/json", width="stretch", on_click="ignore")
+    st.caption(f"Report ID: {bundle['id']} · generated {bundle['generated_at']:%Y-%m-%d %H:%M UTC}")
     with st.expander("Audit preview"):
         st.json({key: {"status": _mapping(value).get("status"), "classification": _classification(_mapping(value)), "provenance": _mapping(value).get("provenance")} for key, value in analysis.items() if isinstance(value, Mapping)})
 
@@ -954,11 +966,14 @@ def main() -> None:
         with st.spinner("Running independent scientific engines…"):
             st.session_state["analysis"] = run_complete_analysis(inputs, progress=update_progress)
             st.session_state["analysis_inputs"] = inputs
+            st.session_state.pop("report_bundle", None)
         progress_bar.empty()
         st.toast("Analysis completed. Review provenance and limitations in each tab.", icon="✅")
 
     analysis = st.session_state.get("analysis")
     active_inputs = st.session_state.get("analysis_inputs")
+    if submitted and inputs is None and analysis:
+        st.warning("The new inputs were rejected. The results below are from your last completed analysis.")
     if not analysis or active_inputs is None:
         _empty_landing()
         return
